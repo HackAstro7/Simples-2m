@@ -96,13 +96,13 @@ html, body {
 
 .profile-name-3d {
     display: inline-block;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 900;
     text-align: center;
     font-family: 'Roboto', sans-serif;
     letter-spacing: 4px;
     color: #00ff00;
-    text-shadow: 0 1px 0 #00cc00, 0 2px 0 #009900, 0 3px 0 #006600, 0 4px 0 #004400, 0 5px 0 #002200, 0 6px 0 #001100, 0 7px 0 #000000, 0 8px 5px rgba(0,0,0,0.5), 0 12px 10px rgba(0,0,0,0.3), 0 0 20px #00ff00, 0 0 40px #00ff00;
+    text-shadow: 0 1px 0 #00cc00, 0 2px 0 #009900, 0 3px 0 #006600, 0 4px 0 #004400, 0 5px 0 #002200, 0 6px 0 #001100, 0 7px 0 #000000, 0 8px 5px rgba(0,0,0,0.5), 0 0 20px #00ff00, 0 0 40px #00ff00;
     animation: rotate3dAdvanced 4s ease-in-out infinite;
     transform-style: preserve-3d;
 }
@@ -116,8 +116,8 @@ html, body {
 }
 
 .login-intro-img {
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid #00ff00;
@@ -147,7 +147,7 @@ html, body {
     color: #fff;
     padding: 14px 15px;
     border-radius: 10px;
-    font-size: 15px;
+    font-size: 16px;
     text-align: center;
     backdrop-filter: blur(8px);
 }
@@ -181,25 +181,71 @@ html, body {
     font-size: 14px;
 }
 
-.btn-entrar {
+/* BOTÕES BLAZE E JONBET */
+.row {
+    display: flex;
+    gap: 10px;
+    margin: 5px 0 15px 0;
+}
+
+.col {
+    flex: 1;
+    padding: 0;
+}
+
+.btn-primary1, .btn-primary2 {
     width: 100%;
-    height: 55px;
-    background: linear-gradient(45deg, #00ff00, #00cc00);
-    border: none;
-    color: #000;
-    font-weight: bold;
-    font-size: 18px;
+    height: 60px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 2px solid;
+    color: #fff;
     border-radius: 10px;
     cursor: pointer;
-    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
     transition: all 0.3s;
+    padding: 5px;
 }
 
-.btn-entrar:hover {
+.btn-primary1 {
+    border-color: #ff0000;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+}
+
+.btn-primary1:hover {
+    background: rgba(255, 0, 0, 0.2);
     transform: scale(1.02);
-    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
 }
 
+.btn-primary2 {
+    border-color: #00ff37;
+    box-shadow: 0 0 15px rgba(0, 255, 55, 0.3);
+}
+
+.btn-primary2:hover {
+    background: rgba(0, 255, 55, 0.2);
+    transform: scale(1.02);
+    box-shadow: 0 0 25px rgba(0, 255, 55, 0.5);
+}
+
+.icon-small {
+    width: 80px;
+    height: auto;
+}
+
+.large-icon {
+    width: 100px;
+    height: auto;
+}
+
+.logo-original {
+    filter: none !important;
+}
+
+/* REDES SOCIAIS */
 .social-icons {
     display: flex;
     justify-content: center;
@@ -211,17 +257,18 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 55px;
-    height: 55px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(8px);
     border: 2px solid;
     text-decoration: none;
+    transition: all 0.3s;
 }
 
 .social-icons a i {
-    font-size: 30px;
+    font-size: 26px;
 }
 
 .social-icons a.instagram {
@@ -232,6 +279,7 @@ html, body {
 .social-icons a.instagram:hover {
     background: #E1306C;
     color: #fff;
+    transform: scale(1.1);
 }
 
 .social-icons a.telegram {
@@ -242,6 +290,7 @@ html, body {
 .social-icons a.telegram:hover {
     background: #0088cc;
     color: #fff;
+    transform: scale(1.1);
 }
 
 .social-icons a.whatsapp {
@@ -252,8 +301,10 @@ html, body {
 .social-icons a.whatsapp:hover {
     background: #25D366;
     color: #fff;
+    transform: scale(1.1);
 }
 
+/* BANNER */
 .section-title {
     color: #fff;
     font-size: 1.5rem;
@@ -265,36 +316,42 @@ html, body {
 .promo-banner {
     background: rgba(0, 0, 0, 0.85);
     border: 1px solid rgba(0, 255, 0, 0.4);
-    padding: 25px 15px;
+    padding: 20px 15px;
     text-align: center;
     border-radius: 15px;
     color: #fff;
     width: 100%;
     backdrop-filter: blur(8px);
+    margin-bottom: 20px;
 }
 
 .promo-banner img {
-    width: 110px;
+    width: 100px;
     border-radius: 50%;
     margin-bottom: 15px;
     border: 3px solid #00ff00;
 }
 
 .promo-banner h2 {
-    font-size: 24px;
+    font-size: 22px;
     color: #00ff00;
     margin-bottom: 12px;
+}
+
+.promo-banner p {
+    font-size: 14px;
+    margin-bottom: 10px;
 }
 
 .preco-antigo {
     text-decoration: line-through;
     color: #ff4d4d;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .preco-novo {
     color: #00ff00;
-    font-size: 26px;
+    font-size: 22px;
     font-weight: bold;
 }
 
@@ -302,28 +359,49 @@ html, body {
     display: inline-block;
     background: linear-gradient(45deg, #00ff00, #00cc00);
     color: #000;
-    padding: 14px 30px;
+    padding: 12px 25px;
     text-decoration: none;
     font-weight: bold;
     border-radius: 8px;
     margin-top: 15px;
+    transition: all 0.3s;
 }
 
 .promo-btn:hover {
     background: linear-gradient(45deg, #00cc00, #009900);
-    color: #000;
+    transform: scale(1.05);
 }
 
+/* MOBILE */
 @media (max-width: 480px) {
     .profile-name-3d {
         font-size: 1.8rem;
+        letter-spacing: 2px;
     }
+    
     .login-intro-img {
         width: 120px;
         height: 120px;
     }
+    
     .social-icons a {
         width: 45px;
         height: 45px;
+    }
+    
+    .social-icons a i {
+        font-size: 22px;
+    }
+    
+    .btn-primary1, .btn-primary2 {
+        height: 55px;
+    }
+    
+    .icon-small {
+        width: 65px;
+    }
+    
+    .large-icon {
+        width: 80px;
     }
 }
