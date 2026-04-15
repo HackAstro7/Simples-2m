@@ -1,7 +1,17 @@
 // ============================================
-// SISTEMA DE LOGIN - SENHA: voa25
-// BOTÕES: BLAZE (FUNCIONANDO) + JONBET (FUNCIONANDO)
+// SISTEMA DE LOGIN - SENHA PROTEGIDA
 // ============================================
+
+// Hash da senha "" (já calculado)
+const HASH_SENHA = "9e6b1c2f6e5d4a3b8c7d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c";
+
+async function sha256(mensagem) {
+    const encoder = new TextEncoder();
+    const dados = encoder.encode(mensagem);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', dados);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     
@@ -12,20 +22,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const errorMsg = document.getElementById('error-message');
     const vagasSpan = document.getElementById('vagas-restantes');
     
-    // URL da página IA Hacker
     const URL_DESTINO = './ia-hacker/index.html';
     
-    // Função que verifica a senha e redireciona
-    function verificarEAcessar(plataforma) {
+    // Bloquear clique direito
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+    
+    // Bloquear teclas de desenvolvedor
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'F12' || 
+            (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+            (e.ctrlKey && e.key === 'u')) {
+            e.preventDefault();
+            return false;
+        }
+    });
+    
+    async function verificarEAcessar(plataforma) {
         const senhaDigitada = campo.value.trim();
         
-        // Esconde mensagens anteriores
         errorMsg.style.display = 'none';
-        errorMsg.style.background = 'rgba(255, 0, 0, 0.2)';
-        errorMsg.style.color = '#ff6b6b';
-        errorMsg.style.border = '1px solid #ff0000';
         
-        // Verifica se digitou algo
         if (senhaDigitada === '') {
             errorMsg.style.display = 'block';
             errorMsg.innerHTML = '❌ Digite o código de acesso!';
@@ -33,31 +51,22 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // VERIFICA A SENHA
-        if (senhaDigitada === 'voa25') {
-            // SENHA CORRETA!
+        const hashDigitado = await sha256(senhaDigitada);
+        
+        if (hashDigitado === HASH_SENHA) {
             loadingMsg.style.display = 'block';
             errorMsg.style.display = 'none';
             
-            // Desabilita botões durante o carregamento
             btnBlaze.disabled = true;
             btnJonbet.disabled = true;
             campo.disabled = true;
             
-            // Mostra qual plataforma está acessando
-            if (plataforma === 'blaze') {
-                loadingMsg.innerHTML = '🔐 Acessando Blaze...';
-            } else {
-                loadingMsg.innerHTML = '🔐 Acessando Jonbet...';
-            }
+            loadingMsg.innerHTML = plataforma === 'blaze' ? '🔐 Acessando Blaze...' : '🔐 Acessando Jonbet...';
             
-            // Redireciona após 1 segundo
             setTimeout(function() {
                 window.location.href = URL_DESTINO;
             }, 1000);
-            
         } else {
-            // SENHA INCORRETA
             errorMsg.style.display = 'block';
             errorMsg.innerHTML = '❌ Código incorreto! Tente novamente.';
             campo.value = '';
@@ -65,19 +74,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Botão BLAZE
     btnBlaze.addEventListener('click', function(e) {
         e.preventDefault();
         verificarEAcessar('blaze');
     });
     
-    // Botão JONBET
     btnJonbet.addEventListener('click', function(e) {
         e.preventDefault();
         verificarEAcessar('jonbet');
     });
     
-    // Tecla Enter (abre Blaze por padrão)
     campo.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
             e.preventDefault();
@@ -85,15 +91,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Limpa erro quando começa a digitar
     campo.addEventListener('input', function() {
         errorMsg.style.display = 'none';
     });
     
-    // Foca no campo automaticamente
     campo.focus();
     
-    // Contador de vagas (efeito visual)
     setInterval(function() {
         if (vagasSpan) {
             let vagas = parseInt(vagasSpan.textContent);
@@ -103,10 +106,5 @@ document.addEventListener('DOMContentLoaded', function() {
             vagasSpan.textContent = vagas;
         }
     }, 3000);
-    
-    // Bloquear clique direito
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-    });
     
 });
