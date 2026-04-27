@@ -426,7 +426,7 @@ body {
     text-align: center;
 }
 
-.resultado-quadrado.red { background-image: url('https://blaze.bet.br/images/roulette/red-0.svg'); color: white; }
+.resultado-quadrado.red { background-image: url('https://jonbet.bet.br/images/roulette/green-0.svg'); color: white; }
 .resultado-quadrado.black { background-image: url('https://blaze.bet.br/images/roulette/black-0.svg'); color: white; }
 .resultado-quadrado.white { background: #f8f9fa; color: #333; border: 2px solid #999; display: flex; align-items: center; justify-content: center; }
 .resultado-quadrado.white img { width: 80%; height: 80%; object-fit: contain; }
