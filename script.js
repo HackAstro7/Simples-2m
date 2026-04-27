@@ -123,9 +123,9 @@
     }
 
     // ========== SISTEMA PRINCIPAL ==========
-    const API_URL = 'https://invictusystem.com.br/blaze/update/update-blaze-recovery-catalogador.php';
-    const WHITE_LOGO_URL = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN6mRp1s5optIzPnjo7I4GwTEZnguJlAUzEWHEwJi0TUTUEAiBMEiVe7E&s=10';
-    const RED_LOGO_URL = 'https://blaze.bet.br/images/roulette/red-0.svg';
+    const API_URL = 'https://invictusystem.com.br/blaze/update/update-jonbet-recovery-catalogador.php';
+    const WHITE_LOGO_URL = 'https://invictusystem.com.br/blaze/img/white-jb.svg';
+    const RED_LOGO_URL = 'https://jonbet.bet.br/images/roulette/green-0.svg';
     const BLACK_LOGO_URL = 'https://blaze.bet.br/images/roulette/black-0.svg';
     
     let historicalResults = [];
